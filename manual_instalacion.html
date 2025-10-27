@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manual de Instalación | Pet-Health Services</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Header Styles */
+    header {
+      background: linear-gradient(135deg, #6E7255 0%, #5A5E47 100%);
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+      margin-bottom: 2rem;
+      border-radius: 0 0 10px 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header .subtitle {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    /* Navigation */
+    .nav-container {
+      background-color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      margin-bottom: 2rem;
+      position: sticky;
+      top: 10px;
+      z-index: 100;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #6E7255;
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: 1px solid #E6D0B4;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      background-color: #E6D0B4;
+      color: #444735;
+    }
+
+    /* Content Sections */
+    .section {
+      background-color: white;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .section h2 {
+      color: #444735;
+      border-bottom: 2px solid #E6D0B4;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .section h2 i {
+      margin-right: 10px;
+      color: #6E7255;
+    }
+
+    .section h3 {
+      color: #5A5E47;
+      margin: 1.5rem 0 1rem 0;
+    }
+
+    /* Requirements Table */
+    .requirements-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+
+    .requirements-table th, .requirements-table td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #E6D0B4;
+    }
+
+    .requirements-table th {
+      background-color: #f9f5f0;
+      color: #444735;
+      font-weight: 600;
+    }
+
+    .requirements-table tr:hover {
+      background-color: #f9f5f0;
+    }
+
+    /* Code Blocks */
+    .code-block {
+      background-color: #2d2d2d;
+      color: #f8f8f2;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+      overflow-x: auto;
+      font-family: 'Consolas', 'Monaco', monospace;
+      line-height: 1.5;
+    }
+
+    .code-block .comment {
+      color: #75715e;
+    }
+
+    .code-block .keyword {
+      color: #f92672;
+    }
+
+    .code-block .function {
+      color: #66d9ef;
+    }
+
+    .code-block .string {
+      color: #a6e22e;
+    }
+
+    .code-block .prompt {
+      color: #fd971f;
+    }
+
+    /* Steps */
+    .step {
+      display: flex;
+      margin-bottom: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .step-number {
+      background-color: #6E7255;
+      color: white;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      flex-shrink: 0;
+      font-weight: bold;
+    }
+
+    .step-content {
+      flex: 1;
+    }
+
+    /* Note and Warning Boxes */
+    .note-box, .warning-box {
+      padding: 1rem;
+      border-radius: 6px;
+      margin: 1rem 0;
+    }
+
+    .note-box {
+      background-color: #e8f4fd;
+      border-left: 4px solid #2196F3;
+    }
+
+    .warning-box {
+      background-color: #fff3e0;
+      border-left: 4px solid #ff9800;
+    }
+
+    .note-box h4, .warning-box h4 {
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .note-box h4 i, .warning-box h4 i {
+      margin-right: 8px;
+    }
+
+    /* Troubleshooting */
+    .troubleshooting-item {
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid #eee;
+    }
+
+    .troubleshooting-item:last-child {
+      border-bottom: none;
+    }
+
+    .troubleshooting-item h4 {
+      color: #d32f2f;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      margin-top: 2rem;
+      color: #666;
+      border-top: 1px solid #E6D0B4;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .nav-links a {
+        width: 100%;
+        text-align: center;
+      }
+      
+      .section {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>🐾 Manual de Instalación</h1>
+      <p class="subtitle">Pet-Health Services - Aplicativo Web Para el Cuidado de Animales y Mascotas de Campo</p>
+    </div>
+  </header>
+
+  <div class="container">
+    <nav class="nav-container">
+      <div class="nav-links">
+        <a href="#introduccion">Introducción</a>
+        <a href="#requisitos">Requisitos del Sistema</a>
+        <a href="#preparacion">Preparación del Entorno</a>
+        <a href="#instalacion">Pasos de Instalación</a>
+        <a href="#configuracion">Configuración</a>
+        <a href="#verificacion">Verificación</a>
+        <a href="#solucion-problemas">Solución de Problemas</a>
+        <a href="#anexos">Anexos</a>
+      </div>
+    </nav>
+
+    <section id="introduccion" class="section">
+      <h2><i>📋</i> Introducción</h2>
+      
+      <h3>Descripción del Software</h3>
+      <p>Pet-Health Services es una aplicación web diseñada para gestionar citas veterinarias de manera eficiente. Permite a los usuarios programar, cancelar y reprogramar citas para sus mascotas y animales de granja.</p>
+      
+      <h3>Propósito del Manual</h3>
+      <p>Este documento proporciona instrucciones detalladas para instalar y configurar Pet-Health Services en diferentes entornos, asegurando una implementación exitosa del sistema.</p>
+      
+      <h3>Público Objetivo</h3>
+      <p>Este manual está dirigido a:</p>
+      <ul>
+        <li>Administradores de sistemas</li>
+        <li>Desarrolladores</li>
+        <li>Personal técnico de clínicas veterinarias</li>
+        <li>Usuarios avanzados que deseen implementar el sistema</li>
+      </ul>
+    </section>
+
+    <section id="requisitos" class="section">
+      <h2><i>⚙️</i> Requisitos del Sistema</h2>
+      
+      <h3>Hardware</h3>
+      <table class="requirements-table">
+        <thead>
+          <tr>
+            <th>Componente</th>
+            <th>Mínimo</th>
+            <th>Recomendado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Procesador</td>
+            <td>Dual-core 1.8 GHz</td>
+            <td>Quad-core 2.5 GHz o superior</td>
+          </tr>
+          <tr>
+            <td>Memoria RAM</td>
+            <td>4 GB</td>
+            <td>8 GB o más</td>
+          </tr>
+          <tr>
+            <td>Almacenamiento</td>
+            <td>500 MB de espacio libre</td>
+            <td>1 GB de espacio libre</td>
+          </tr>
+          <tr>
+            <td>Conexión</td>
+            <td>Internet para descarga</td>
+            <td>Conexión estable</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <h3>Sistemas Operativos Compatibles</h3>
+      <ul>
+        <li>Windows 10/11</li>
+        <li>macOS 10.14+</li>
+        <li>Ubuntu 18.04+ / Debian 10+</li>
+        <li>CentOS 7+</li>
+      </ul>
+      
+      <h3>Dependencias</h3>
+      <div class="note-box">
+        <h4><i>💡</i> Nota</h4>
+        <p>Las siguientes dependencias son necesarias solo si se utiliza la versión con backend.</p>
+      </div>
+      
+      <ul>
+        <li><strong>Python:</strong> Versión 3.10 o superior</li>
+        <li><strong>FastAPI:</strong> Framework web moderno</li>
+        <li><strong>Uvicorn:</strong> Servidor ASGI</li>
+        <li><strong>SQLite/PostgreSQL:</strong> Base de datos (según configuración)</li>
+        <li><strong>Pydantic:</strong> Validación de datos</li>
+      </ul>
+    </section>
+
+    <section id="preparacion" class="section">
+      <h2><i>🔧</i> Preparación del Entorno</h2>
+      
+      <h3>Instalación de Python</h3>
+      
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <p><strong>Verificar si Python está instalado:</strong></p>
+          <div class="code-block">
+            <span class="prompt">$</span> python --version<br>
+            <span class="comment"># O</span><br>
+            <span class="prompt">$</span> python3 --version
+          </div>
+        </div>
+      </div>
+      
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <p><strong>Instalar Python (si no está instalado):</strong></p>
+          <p><strong>Windows:</strong> Descargar desde <a href="https://python.org">python.org</a></p>
+          <p><strong>macOS:</strong> <code>brew install python</code></p>
+          <p><strong>Linux (Ubuntu/Debian):</strong></p>
+          <div class="code-block">
+            <span class="prompt">$</span> sudo apt update<br>
+            <span class="prompt">$</span> sudo apt install python3 python3-pip
+          </div>
+        </div>
+      </div>
+      
+      <h3>Preparación del Directorio</h3>
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <p><strong>Crear directorio para la aplicación:</strong></p>
+          <div class="code-block">
+            <span class="prompt">$</span> mkdir pet-health-services<br>
+            <span class="prompt">$</span> cd pet-health-services
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="instalacion" class="section">
+      <h2><i>📥</i> Pasos de Instalación</h2>
+      
+      <h3>Método 1: Instalación Básica (Frontend solamente)</h3>
+      
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <p><strong>Descargar los archivos del proyecto:</strong></p>
+          <div class="code-block">
+            <span class="comment"># Clonar el repositorio o descargar los archivos</span><br>
+            <span class="prompt">$</span> git clone https://github.com/eclipse7-9/enlistment-layout/tree/feature/index-login<br>
+            <span class="prompt">$</span> cd services
+          </div>
+        </div>
+      </div>
+      
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <p><strong>Abrir la aplicación:</strong></p>
+          <div class="code-block">
+            <span class="comment"># Navegar al directorio y abrir index.html en el navegador</span><br>
+            <span class="prompt">$</span> start index.html <span class="comment"># Windows</span><br>
+            <span class="prompt">$</span> open index.html <span class="comment"># macOS</span><br>
+            <span class="prompt">$</span> xdg-open index.html <span class="comment"># Linux</span>
+          </div>
+        </div>
+      </div>
+      
+      <h3>Método 2: Instalación Completa (con Backend)</h3>
+      
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <p><strong>Crear entorno virtual:</strong></p>
+          <div class="code-block">
+            <span class="prompt">$</span> python -m venv entorno-virtual<br>
+            <span class="comment"># O</span><br>
+            <span class="prompt">$</span> python3 -m venv entorno-virtual
+          </div>
+        </div>
+      </div>
+      
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <p><strong>Activar entorno virtual:</strong></p>
+          <div class="code-block">
+            <span class="comment"># Windows</span><br>
+            <span class="prompt">></span> entorno-virtual\Scripts\activate<br><br>
+            <span class="comment"># macOS/Linux</span><br>
+            <span class="prompt">$</span> source entorno-virtual/bin/activate
+          </div>
+        </div>
+      </div>
+      
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <p><strong>Instalar dependencias:</strong></p>
+          <div class="code-block">
+            <span class="prompt">$</span> pip install -r requirements.txt
+          </div>
+          <div class="note-box">
+            <h4><i>💡</i> Contenido de requirements.txt</h4>
+            <div class="code-block">
+              fastapi==0.104.1<br>
+              uvicorn==0.24.0<br>
+              pydantic==2.4.2<br>
+              sqlalchemy==2.0.23
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <p><strong>Iniciar el servidor:</strong></p>
+          <div class="code-block">
+            <span class="prompt">$</span> uvicorn main:app --reload --host 0.0.0.0 --port 8000
+          </div>
+        </div>
+      </div>
+      
+      <div class="step">
+        <div class="step-number">5</div>
+        <div class="step-content">
+          <p><strong>Acceder a la aplicación:</strong></p>
+          <p>Abrir el navegador y navegar a: <code>http://localhost:8000</code></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="configuracion" class="section">
+      <h2><i>⚡</i> Configuración</h2>
+      
+      <h3>Archivos de Configuración</h3>
+      <p>El archivo principal de configuración es <code>config.py</code> ubicado en el directorio raíz.</p>
+      
+      <div class="code-block">
+        <span class="comment"># config.py - Configuración principal</span><br>
+        <span class="keyword">import</span> os<br><br>
+        
+        <span class="comment"># Configuración de base de datos</span><br>
+        DATABASE_URL = os.getenv(<span class="string">"DATABASE_URL"</span>, <span class="string">"sqlite:///./pet_health.db"</span>)<br><br>
+        
+        <span class="comment"># Configuración del servidor</span><br>
+        HOST = os.getenv(<span class="string">"HOST"</span>, <span class="string">"0.0.0.0"</span>)<br>
+        PORT = int(os.getenv(<span class="string">"PORT"</span>, <span class="string">"8000"</span>))<br><br>
+        
+        <span class="comment"># Configuración de la aplicación</span><br>
+        DEBUG = os.getenv(<span class="string">"DEBUG"</span>, <span class="string">"True"</span>).lower() == <span class="string">"true"</span>
+      </div>
+      
+      <h3>Variables de Entorno</h3>
+      <p>Puedes configurar la aplicación mediante variables de entorno:</p>
+      
+      <div class="code-block">
+        <span class="comment"># En Linux/macOS</span><br>
+        <span class="prompt">$</span> <span class="keyword">export</span> DATABASE_URL=postgresql://user:pass@localhost/pethealth<br>
+        <span class="prompt">$</span> <span class="keyword">export</span> DEBUG=False<br>
+        <span class="prompt">$</span> uvicorn main:app --reload<br><br>
+        
+        <span class="comment"># En Windows</span><br>
+        <span class="prompt">></span> <span class="keyword">set</span> DATABASE_URL=postgresql://user:pass@localhost/pethealth<br>
+        <span class="prompt">></span> <span class="keyword">set</span> DEBUG=False<br>
+        <span class="prompt">></span> uvicorn main:app --reload
+      </div>
+      
+      <h3>Personalización</h3>
+      <p>Para personalizar la aplicación, modifica los siguientes parámetros:</p>
+      <ul>
+        <li><strong>Base de datos:</strong> Cambiar DATABASE_URL para usar PostgreSQL, MySQL, etc.</li>
+        <li><strong>Puerto:</strong> Modificar la variable PORT para usar un puerto diferente</li>
+        <li><strong>Autenticación:</strong> Configurar sistema de usuarios si es necesario</li>
+      </ul>
+    </section>
+
+    <section id="verificacion" class="section">
+      <h2><i>✅</i> Verificación</h2>
+      
+      <h3>Comprobación de la Instalación</h3>
+      
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <p><strong>Verificar que el servidor esté ejecutándose:</strong></p>
+          <p>Accede a <code>http://localhost:8000</code> en tu navegador. Deberías ver la página principal de Pet-Health Services.</p>
+        </div>
+      </div>
+      
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <p><strong>Verificar la API (si se usa backend):</strong></p>
+          <p>Accede a <code>http://localhost:8000/entorno_virtual/</code> para ver la documentación interactiva de la API.</p>
+        </div>
+      </div>
+      
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <p><strong>Probar funcionalidades básicas:</strong></p>
+          <ul>
+            <li>Navegar entre las diferentes páginas</li>
+            <li>Intentar registrar una cita de prueba</li>
+            <li>Verificar que las páginas se cargan correctamente</li>
+          </ul>
+        </div>
+      </div>
+      
+      <h3>Comandos de Verificación</h3>
+      <div class="code-block">
+        <span class="comment"># Verificar que Python está instalado correctamente</span><br>
+        <span class="prompt">$</span> python --version<br>
+        <span class="prompt">$</span> pip list <span class="comment"># Ver paquetes instalados</span><br><br>
+        
+        <span class="comment"># Verificar que el servidor responde</span><br>
+        <span class="prompt">$</span> curl http://localhost:8000/health <span class="comment"># Si existe endpoint de salud</span>
+      </div>
+    </section>
+
+    <section id="solucion-problemas" class="section">
+      <h2><i>🔍</i> Solución de Problemas</h2>
+      
+      <div class="troubleshooting-item">
+        <h4>Error: "Python no se reconoce como un comando interno o externo"</h4>
+        <p><strong>Solución:</strong></p>
+        <ul>
+          <li>Verificar que Python esté instalado: <code>python --version</code></li>
+          <li>En Windows, añadir Python al PATH durante la instalación</li>
+          <li>Usar <code>python3</code> en lugar de <code>python</code> en algunos sistemas</li>
+        </ul>
+      </div>
+      
+      <div class="troubleshooting-item">
+        <h4>Error: "Puerto 8000 ya en uso"</h4>
+        <p><strong>Solución:</strong></p>
+        <ul>
+          <li>Usar un puerto diferente: <code>uvicorn main:app --reload --port 8001</code></li>
+          <li>Identificar y detener el proceso que usa el puerto 8000</li>
+          <li>En Linux/macOS: <code>lsof -i :8000</code> y <code>kill -9 PID</code></li>
+        </ul>
+      </div>
+      
+      <div class="troubleshooting-item">
+        <h4>Error: "ModuleNotFoundError: No module named 'fastapi'"</h4>
+        <p><strong>Solución:</strong></p>
+        <ul>
+          <li>Asegurarse de que el entorno virtual esté activado</li>
+          <li>Instalar las dependencias: <code>pip install -r requirements.txt</code></li>
+          <li>Verificar que requirements.txt existe y tiene el contenido correcto</li>
+        </ul>
+      </div>
+      
+      <div class="troubleshooting-item">
+        <h4>La página se carga pero las funciones no trabajan</h4>
+        <p><strong>Solución:</strong></p>
+        <ul>
+          <li>Verificar la consola del navegador para errores JavaScript (F12)</li>
+          <li>Asegurarse de que el backend esté ejecutándose si se usa</li>
+          <li>Comprobar que todas las rutas de archivos sean correctas</li>
+        </ul>
+      </div>
+      
+      <h3>Archivos de Logs</h3>
+      <p>Los logs de la aplicación se encuentran en:</p>
+      <ul>
+        <li><strong>Frontend:</strong> Consola del navegador (F12 → Console)</li>
+        <li><strong>Backend:</strong> Salida de la terminal donde se ejecuta uvicorn</li>
+        <li><strong>Archivo de log:</strong> <code>app.log</code> (si está configurado)</li>
+      </ul>
+    </section>
+
+    <section id="anexos" class="section">
+      <h2><i>📚</i> Anexos</h2>
+      
+      <h3>Recursos Adicionales</h3>
+      <ul>
+        <li><a href="#">Documentación completa de Pet-Health Services</a></li>
+        <li><a href="https://fastapi.tiangolo.com">Documentación oficial de FastAPI</a></li>
+        <li><a href="https://python.org">Sitio oficial de Python</a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/HTML">Documentación de HTML</a></li>
+      </ul>
+      
+      <h3>Soporte Técnico</h3>
+      <p>Si necesitas ayuda adicional con la instalación:</p>
+      <ul>
+        <li><strong>Email:</strong> soporte@pethealthservices.com</li>
+        <li><strong>Foro:</strong> community.pethealthservices.com</li>
+        <li><strong>Documentación:</strong> docs.pethealthservices.com</li>
+      </ul>
+    </section>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>© 2025 Pet-Health Services. Todos los derechos reservados.</p>
+      <p>Manual de Instalación v2.1 - Última actualización: Enero 2025</p>
+    </div>
+  </footer>
+</body>
+</html>
