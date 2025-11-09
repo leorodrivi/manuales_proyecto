@@ -1,723 +1,634 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Manual de Usuario | Pet-Health Services</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background-color: #f8f9fa;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    /* Header Styles */
-    header {
-      background: linear-gradient(135deg, #6E7255 0%, #5A5E47 100%);
-      color: white;
-      padding: 2rem 0;
-      text-align: center;
-      margin-bottom: 2rem;
-      border-radius: 0 0 10px 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    header .subtitle {
-      font-size: 1.2rem;
-      opacity: 0.9;
-    }
-
-    /* Navigation */
-    .nav-container {
-      background-color: white;
-      padding: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      margin-bottom: 2rem;
-      position: sticky;
-      top: 10px;
-      z-index: 100;
-    }
-
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: #6E7255;
-      padding: 8px 16px;
-      border-radius: 20px;
-      border: 1px solid #E6D0B4;
-      transition: all 0.3s ease;
-      font-weight: 500;
-    }
-
-    .nav-links a:hover {
-      background-color: #E6D0B4;
-      color: #444735;
-    }
-
-    /* Content Sections */
-    .section {
-      background-color: white;
-      padding: 2rem;
-      margin-bottom: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
-
-    .section h2 {
-      color: #444735;
-      border-bottom: 2px solid #E6D0B4;
-      padding-bottom: 0.5rem;
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-    }
-
-    .section h2 i {
-      margin-right: 10px;
-      color: #6E7255;
-    }
-
-    .section h3 {
-      color: #5A5E47;
-      margin: 1.5rem 0 1rem 0;
-      padding-left: 10px;
-      border-left: 3px solid #E6D0B4;
-    }
-
-    /* Feature Cards */
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-      margin: 1.5rem 0;
-    }
-
-    .feature-card {
-      background: #f9f5f0;
-      padding: 1.5rem;
-      border-radius: 8px;
-      border: 1px solid #E6D0B4;
-      transition: transform 0.3s ease;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .feature-card h4 {
-      color: #444735;
-      margin-bottom: 0.5rem;
-      display: flex;
-      align-items: center;
-    }
-
-    .feature-card h4 i {
-      margin-right: 8px;
-      color: #6E7255;
-    }
-
-    /* Steps */
-    .step {
-      display: flex;
-      margin-bottom: 1.5rem;
-      align-items: flex-start;
-      background: #f9f5f0;
-      padding: 1.5rem;
-      border-radius: 8px;
-      border-left: 4px solid #6E7255;
-    }
-
-    .step-number {
-      background-color: #6E7255;
-      color: white;
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 15px;
-      flex-shrink: 0;
-      font-weight: bold;
-      font-size: 1.1rem;
-    }
-
-    .step-content {
-      flex: 1;
-    }
-
-    .step-content img {
-      max-width: 100%;
-      border-radius: 6px;
-      margin-top: 10px;
-      border: 1px solid #E6D0B4;
-    }
-
-    /* UI Elements */
-    .ui-element {
-      background: #2d2d2d;
-      color: white;
-      padding: 1rem;
-      border-radius: 6px;
-      margin: 0.5rem 0;
-      font-family: 'Consolas', monospace;
-    }
-
-    .ui-element .element-name {
-      color: #66d9ef;
-      font-weight: bold;
-    }
-
-    /* Note and Warning Boxes */
-    .note-box, .warning-box, .tip-box {
-      padding: 1.5rem;
-      border-radius: 8px;
-      margin: 1.5rem 0;
-      border-left: 4px solid;
-    }
-
-    .note-box {
-      background-color: #e8f4fd;
-      border-left-color: #2196F3;
-    }
-
-    .warning-box {
-      background-color: #fff3e0;
-      border-left-color: #ff9800;
-    }
-
-    .tip-box {
-      background-color: #e8f5e8;
-      border-left-color: #4CAF50;
-    }
-
-    .note-box h4, .warning-box h4, .tip-box h4 {
-      margin-bottom: 0.5rem;
-      display: flex;
-      align-items: center;
-    }
-
-    .note-box h4 i, .warning-box h4 i, .tip-box h4 i {
-      margin-right: 8px;
-    }
-
-    /* FAQ Section */
-    .faq-item {
-      margin-bottom: 1.5rem;
-      padding-bottom: 1.5rem;
-      border-bottom: 1px solid #E6D0B4;
-    }
-
-    .faq-item:last-child {
-      border-bottom: none;
-    }
-
-    .faq-question {
-      color: #444735;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-    }
-
-    .faq-question i {
-      margin-right: 10px;
-      color: #6E7255;
-    }
-
-    /* Troubleshooting */
-    .troubleshooting-item {
-      margin-bottom: 1.5rem;
-      padding: 1.5rem;
-      background: #fff8e1;
-      border-radius: 6px;
-      border-left: 4px solid #ff9800;
-    }
-
-    .troubleshooting-item h4 {
-      color: #d32f2f;
-      margin-bottom: 0.5rem;
-      display: flex;
-      align-items: center;
-    }
-
-    .troubleshooting-item h4 i {
-      margin-right: 8px;
-    }
-
-    /* Glossary */
-    .glossary-term {
-      margin-bottom: 1rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid #eee;
-    }
-
-    .glossary-term:last-child {
-      border-bottom: none;
-    }
-
-    .glossary-term dt {
-      font-weight: bold;
-      color: #444735;
-      margin-bottom: 0.3rem;
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 2rem 0;
-      margin-top: 2rem;
-      color: #666;
-      border-top: 1px solid #E6D0B4;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .nav-links {
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      .nav-links a {
-        width: 100%;
-        text-align: center;
-      }
-      
-      .section {
-        padding: 1.5rem;
-      }
-      
-      .feature-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual de Usuario - Pet-Health Services</title>
+    <style>
+        :root {
+            --beige: #E6D0B4;
+            --blanco: #ffffff;
+            --verde-oliva: #6E7255;
+            --verde-oscuro: #5A5E47;
+            --gris-claro: #f8f9fa;
+            --sombra: rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--verde-oliva);
+            background-color: var(--beige);
+            padding: 0;
+            margin: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--verde-oscuro);
+            color: var(--blanco);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px var(--sombra);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-icon {
+            font-size: 2rem;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+        
+        nav a {
+            color: var(--blanco);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        main {
+            background-color: var(--blanco);
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--sombra);
+            overflow: hidden;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(90, 94, 71, 0.8), rgba(90, 94, 71, 0.9)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%235A5E47"/><path d="M30,30 L70,30 L70,70 L30,70 Z" fill="none" stroke="%23E6D0B4" stroke-width="2"/><circle cx="50" cy="50" r="20" fill="none" stroke="%23E6D0B4" stroke-width="2"/></svg>');
+            background-size: cover;
+            color: var(--blanco);
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        section {
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--beige);
+        }
+        
+        section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+            color: var(--verde-oscuro);
+        }
+        
+        .section-title i {
+            font-size: 1.5rem;
+        }
+        
+        h3 {
+            font-size: 1.8rem;
+        }
+        
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 1.5rem;
+        }
+        
+        .card {
+            background-color: var(--gris-claro);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px var(--sombra);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px var(--sombra);
+        }
+        
+        .card h4 {
+            color: var(--verde-oscuro);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+        
+        ul.feature-list {
+            list-style-type: none;
+            margin: 1rem 0;
+        }
+        
+        ul.feature-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        ul.feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--verde-oscuro);
+            font-weight: bold;
+        }
+        
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .step {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+        
+        .step-number {
+            background-color: var(--verde-oscuro);
+            color: var(--blanco);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-weight: bold;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--beige);
+        }
+        
+        th {
+            background-color: var(--verde-oscuro);
+            color: var(--blanco);
+        }
+        
+        tr:nth-child(even) {
+            background-color: var(--gris-claro);
+        }
+        
+        .faq-item {
+            margin-bottom: 1rem;
+            border: 1px solid var(--beige);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            background-color: var(--gris-claro);
+            padding: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-answer {
+            padding: 1rem;
+            display: none;
+        }
+        
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        
+        footer {
+            background-color: var(--verde-oscuro);
+            color: var(--blanco);
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <h1>📘 Manual de Usuario</h1>
-      <p class="subtitle">Pet-Health Services - Aplicativo Web Para el Cuidado de Animales y Mascotas de Campo</p>
-    </div>
-  </header>
-
-  <div class="container">
-    <nav class="nav-container">
-      <div class="nav-links">
-        <a href="#introduccion">Introducción</a>
-        <a href="#convenciones">Convenciones</a>
-        <a href="#primeros-pasos">Primeros Pasos</a>
-        <a href="#interfaz">Interfaz de Usuario</a>
-        <a href="#funcionalidades">Funcionalidades</a>
-        <a href="#errores">Manejo de Errores</a>
-        <a href="#faq">Preguntas Frecuentes</a>
-        <a href="#glosario">Glosario</a>
-        <a href="#soporte">Soporte</a>
-      </div>
-    </nav>
-
-    <section id="introduccion" class="section">
-      <h2><i>👋</i> Introducción</h2>
-      
-      <h3>Bienvenida</h3>
-      <p>Bienvenido al manual de usuario de <strong>Pet-Health Services</strong>, la aplicación web diseñada para simplificar la gestión de citas veterinarias para tus mascotas y animales de granja.</p>
-      
-      <h3>Propósito del Software</h3>
-      <p>Pet-Health Services permite a los propietarios de animales programar, cancelar y reprogramar citas veterinarias de manera intuitiva, optimizando el tiempo tanto de los dueños como de los profesionales veterinarios.</p>
-      
-      <h3>Público Objetivo</h3>
-      <p>Este manual está dirigido a:</p>
-      <div class="feature-grid">
-        <div class="feature-card">
-          <h4><i>👨‍👩‍👧‍👦</i> Propietarios</h4>
-          <p>Dueños de mascotas y animales que necesitan gestionar sus citas veterinarias.</p>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon"></span>
+                    <h1>Pet-Health Services</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#perfil">Perfil</a></li>
+                        <li><a href="#mascotas">Mascotas</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
-        <div class="feature-card">
-          <h4><i>🏥</i> Personal Administrativo</h4>
-          <p>Empleados de clínicas veterinarias que utilizan el sistema para gestionar citas.</p>
-        </div>
-        <div class="feature-card">
-          <h4><i>👨‍💻</i> Usuarios Principales</h4>
-          <p>Cualquier persona que necesite utilizar el sistema de gestión de citas veterinarias.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="convenciones" class="section">
-      <h2><i>📝</i> Convenciones Usadas</h2>
-      
-      <p>En este manual utilizamos las siguientes convenciones para facilitar la comprensión:</p>
-      
-      <div class="feature-grid">
-        <div class="feature-card">
-          <h4><i>🔤</i> Texto en Negrita</h4>
-          <p>Indica <strong>nombres de botones</strong>, <strong>opciones de menú</strong> o elementos importantes de la interfaz.</p>
-        </div>
-        <div class="feature-card">
-          <h4><i>💻</i> Texto en Código</h4>
-          <p>Indica <code>nombres de archivos</code>, <code>comandos</code> o elementos técnicos.</p>
-        </div>
-        <div class="feature-card">
-          <h4><i>📋</i> Elementos de Interfaz</h4>
-          <p class="ui-element">[<span class="element-name">Nombre del Botón</span>] - Representa elementos clickeables.</p>
-        </div>
-      </div>
-      
-      <div class="note-box">
-        <h4><i>💡</i> Nota</h4>
-        <p>Proporciona información adicional relevante o consejos útiles.</p>
-      </div>
-      
-      <div class="warning-box">
-        <h4><i>⚠️</i> Advertencia</h4>
-        <p>Indica posibles problemas o acciones que requieren precaución especial.</p>
-      </div>
-      
-      <div class="tip-box">
-        <h4><i>🎯</i> Tip</h4>
-        <p>Ofrece sugerencias prácticas para un uso más eficiente del sistema.</p>
-      </div>
-    </section>
-
-    <section id="primeros-pasos" class="section">
-      <h2><i>🚀</i> Primeros Pasos / Inicio Rápido</h2>
-      
-      <p>Sigue esta guía concisa para comenzar a usar Pet-Health Services rápidamente:</p>
-      
-      <div class="step">
-        <div class="step-number">1</div>
-        <div class="step-content">
-          <h4>Acceder al Sistema</h4>
-          <p>Abre tu navegador y navega a la dirección de Pet-Health Services.</p>
-          <div class="tip-box">
-            <h4><i>🎯</i> Tip</h4>
-            <p>Si es tu primera vez, la aplicación se abrirá automáticamente en la página principal.</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="step">
-        <div class="step-number">2</div>
-        <div class="step-content">
-          <h4>Revisar Citas Existentes</h4>
-          <p>En la página principal, podrás ver todas las citas programadas.</p>
-          <!-- Espacio para captura de pantalla -->
-          <div style="background: #f0f0f0; padding: 2rem; text-align: center; border-radius: 6px; margin-top: 10px;">
-            <p ><img src="./images/Pagina_principal.png" alt=""></p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="step">
-        <div class="step-number">3</div>
-        <div class="step-content">
-          <h4>Programar tu Primera Cita</h4>
-          <p>Haz clic en [<span class="element-name">Registrar Cita</span>] y completa el formulario con los datos de tu mascota.</p>
-        </div>
-      </div>
-      
-      <div class="step">
-        <div class="step-number">4</div>
-        <div class="step-content">
-          <h4>Confirmar la Cita</h4>
-          <p>Revisa los datos y haz clic en [<span class="element-name">Guardar Cita</span>] para confirmar.</p>
-          <div class="note-box">
-            <h4><i>💡</i> Nota</h4>
-            <p>Recibirás una confirmación visual cuando la cita se haya registrado correctamente.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="interfaz" class="section">
-      <h2><i>🖥️</i> Descripción de la Interfaz de Usuario</h2>
-      
-      <h3>Página Principal (Dashboard)</h3>
-      <p>La página principal muestra un resumen completo de tus citas veterinarias:</p>
-      
-      <div class="feature-grid">
-        <div class="feature-card">
-          <h4><i>📅</i> Lista de Citas</h4>
-          <p>Visualiza todas las citas programadas con información detallada de cada una.</p>
-        </div>
-        <div class="feature-card">
-          <h4><i>⚡</i> Acciones Rápidas</h4>
-          <p>Botones para [<span class="element-name">Cancelar</span>] y [<span class="element-name">Registrar</span>] citas directamente.</p>
-        </div>
-        <div class="feature-card">
-          <h4><i>🧭</i> Navegación Principal</h4>
-          <p>Acceso rápido a todas las funcionalidades del sistema.</p>
-        </div>
-        <p><img src="./images/Lista_de_citas.png" alt="" style="width: 800px"></p>
-      </div>
-    </section>
-
-    <section id="funcionalidades" class="section">
-      <h2><i>🎯</i> Funcionalidades Principales</h2>
-      
-      <h3>Registrar Nueva Cita</h3>
-      <div class="step">
-        <div class="step-number">1</div>
-        <div class="step-content">
-          <h4>Completar Información</h4>
-          <p>Llena todos los campos requeridos:</p>
-          <ul>
-            <li>🐾 <strong>Nombre de la mascota</strong></li>
-            <li>📅 <strong>Fecha de la cita</strong></li>
-            <li>🕒 <strong>Hora de la cita</strong></li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="step">
-        <div class="step-number">2</div>
-        <div class="step-content">
-          <h4>Confirmar Registro</h4>
-          <p>Haz clic en [<span class="element-name">Guardar Cita</span>] para finalizar el proceso.</p>
-          <div class="tip-box">
-            <h4><i>🎯</i> Tip</h4>
-            <p>Puedes programar múltiples citas para la misma mascota en diferentes fechas.</p>
-          </div>
-        </div>
-      </div>
-      <p><img src="./images/Registrar_cita.png" alt="" style="width: 400px"></p>
-      
-      <h3>Cancelar Cita Existente</h3>
-      <div class="step">
-        <div class="step-number">1</div>
-        <div class="step-content">
-          <h4>Seleccionar Cita</h4>
-          <p>Desde la página principal, localiza la cita que deseas cancelar.</p>
-        </div>
-      </div>
-      
-      <div class="step">
-        <div class="step-number">2</div>
-        <div class="step-content">
-          <h4>Iniciar Cancelación</h4>
-          <p>Haz clic en el botón [<span class="element-name">Cancelar</span>] correspondiente a la cita.</p>
-        </div>
-      </div>
-      
-      <div class="step">
-        <div class="step-number">3</div>
-        <div class="step-content">
-          <h4>Confirmar Acción</h4>
-          <p>Confirma la cancelación en el diálogo de confirmación que aparecerá.</p>
-          <div class="warning-box">
-            <h4><i>⚠️</i> Advertencia</h4>
-            <p>Una vez cancelada, la cita no se puede recuperar. Asegúrate antes de confirmar.</p>
-          </div>
-        </div>
-      </div>
-      <p><img src="./images/Cancelar_cita.png" alt="" style="width: 400px"></p>
-    </section>
-
-    <section id="errores" class="section">
-      <h2><i>🔧</i> Manejo de Errores y Solución de Problemas</h2>
-      
-      <div class="troubleshooting-item">
-        <h4><i>❌</i> Error: "No se puede guardar la cita"</h4>
-        <p><strong>Causas posibles:</strong></p>
-        <ul>
-          <li>Campos obligatorios sin completar</li>
-          <li>Fecha u hora inválida</li>
-          <li>Problemas de conexión (si usa backend)</li>
-        </ul>
-        <p><strong>Solución:</strong></p>
-        <ol>
-          <li>Verifica que todos los campos marcados como obligatorios estén completos</li>
-          <li>Asegúrate de que la fecha seleccionada sea futura</li>
-          <li>Revisa tu conexión a internet</li>
-        </ol>
-      </div>
-      
-      <div class="troubleshooting-item">
-        <h4><i>❌</i> Error: "La página no carga correctamente"</h4>
-        <p><strong>Causas posibles:</strong></p>
-        <ul>
-          <li>Navegador desactualizado</li>
-          <li>JavaScript deshabilitado</li>
-          <li>Problemas con los archivos locales</li>
-        </ul>
-        <p><strong>Solución:</strong></p>
-        <ol>
-          <li>Actualiza tu navegador a la última versión</li>
-          <li>Habilita JavaScript en la configuración de tu navegador</li>
-          <li>Verifica que todos los archivos estén en la misma carpeta</li>
-        </ol>
-      </div>
-      
-      <div class="troubleshooting-item">
-        <h4><i>❌</i> Error: "No se pueden cargar las citas existentes"</h4>
-        <p><strong>Causas posibles:</strong></p>
-        <ul>
-          <li>Problemas con el almacenamiento local</li>
-          <li>Datos corruptos</li>
-          <li>Backend no disponible</li>
-        </ul>
-        <p><strong>Solución:</strong></p>
-        <ol>
-          <li>Limpia el almacenamiento local del navegador</li>
-          <li>Verifica que el servidor esté ejecutándose (si aplica)</li>
-          <li>Contacta al soporte técnico si el problema persiste</li>
-        </ol>
-      </div>
-      
-      <h3>Mensajes de Error Comunes</h3>
-      <div class="feature-grid">
-        <div class="feature-card">
-          <h4><i>📝</i> "Complete todos los campos"</h4>
-          <p>Significa que hay campos obligatorios vacíos en el formulario.</p>
-        </div>
-        <div class="feature-card">
-          <h4><i>⏰</i> "Fecha u hora inválida"</h4>
-          <p>Indica que la fecha seleccionada es anterior a la actual o la hora no es válida.</p>
-        </div>
-        <div class="feature-card">
-          <h4><i>🔍</i> "Cita no encontrada"</h4>
-          <p>Aparece cuando intentas acceder a una cita que no existe o fue eliminada.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="faq" class="section">
-      <h2><i>❓</i> Preguntas Frecuentes (FAQ)</h2>
-      
-      <div class="faq-item">
-        <div class="faq-question">
-          <i>🐾</i> ¿Puedo registrar citas para diferentes tipos de animales?
-        </div>
-        <p>Sí, Pet-Health Services está diseñado para gestionar citas de todo tipo de mascotas y animales de granja.</p>
-      </div>
-      
-      <div class="faq-item">
-        <div class="faq-question">
-          <i>💾</i> ¿Dónde se almacenan mis datos de citas?
-        </div>
-        <p>En la versión frontend, los datos se almacenan localmente en tu navegador. En la versión con backend, se guardan en una base de datos segura.</p>
-      </div>
-      
-      <div class="faq-item">
-        <div class="faq-question">
-          <i>📱</i> ¿Puedo usar la aplicación en mi teléfono móvil?
-        </div>
-        <p>Sí, la aplicación es completamente responsive y se adapta a diferentes tamaños de pantalla, incluyendo smartphones y tablets.</p>
-      </div>
-      
-      <div class="faq-item">
-        <div class="faq-question">
-          <i>🔄</i> ¿Con qué frecuencia debo actualizar la aplicación?
-        </div>
-        <p>La aplicación se actualiza automáticamente. Si usas la versión local, se recomienda descargar las actualizaciones cuando estén disponibles.</p>
-      </div>
-      
-      <div class="faq-item">
-        <div class="faq-question">
-          <i>👥</i> ¿Pueden múltiples usuarios usar la misma instalación?
-        </div>
-        <p>En la versión local, los datos son específicos de cada navegador y usuario. En la versión con backend, se puede configurar acceso múltiple.</p>
-      </div>
-    </section>
-
-    <section id="glosario" class="section">
-      <h2><i>📚</i> Glosario</h2>
-      
-      <dl class="glossary-list">
-        <div class="glossary-term">
-          <dt>Frontend</dt>
-          <dd>Parte del software con la que interactúa directamente el usuario, incluyendo interfaces y elementos visuales.</dd>
-        </div>
+    </header>
+    
+    <main class="container">
+        <section id="" class="">
+            <h2>Manual de Usuario</h2>
+            <p>Bienvenido a Pet-Health Services, tu plataforma integral para el cuidado y bienestar de tus mascotas</p>
+        </section>
         
-        <div class="glossary-term">
-          <dt>Backend</dt>
-          <dd>Parte del software que procesa datos y ejecuta la lógica de negocio, generalmente en un servidor.</dd>
-        </div>
+        <section id="introduccion">
+            <div class="section-title">
+                <h3>Introducción</h3>
+            </div>
+            <p>Pet-Health Services es una plataforma diseñada para gestionar todos los aspectos relacionados con la salud y bienestar de tus mascotas. Con nuestra aplicación, puedes acceder a servicios veterinarios, programar citas, realizar pedidos de productos y mucho más.</p>
+            
+            <div class="cards-container">
+                <div class="card">
+                    <h4>Diseño Visual</h4>
+                    <p>Nuestra aplicación utiliza una paleta de colores cuidadosamente seleccionada para una experiencia visual agradable:</p>
+                    <ul class="feature-list">
+                        <li><strong>Fondo principal:</strong> Beige claro para una experiencia relajante</li>
+                        <li><strong>Texto:</strong> Verde oliva para lectura cómoda</li>
+                        <li><strong>Elementos destacados:</strong> Verde oscuro para botones y encabezados</li>
+                        <li><strong>Superficies:</strong> Blanco para tarjetas y contenedores</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
         
-        <div class="glossary-term">
-          <dt>Responsive</dt>
-          <dd>Diseño que se adapta automáticamente a diferentes tamaños de pantalla y dispositivos.</dd>
-        </div>
+        <section id="comenzando">
+            <div class="section-title">
+                <h3>Comenzando</h3>
+            </div>
+            
+            <div class="cards-container">
+                <div class="card">
+                    <h4>Requisitos Previos</h4>
+                    <ul class="feature-list">
+                        <li>Navegador web moderno (Chrome, Firefox, Safari, Edge)</li>
+                        <li>Conexión a Internet</li>
+                        <li>Cuenta de usuario registrada</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4>Acceso a la Plataforma</h4>
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div>Abre tu navegador y ve a la dirección de la aplicación</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div>Si es tu primera vez, regístrate creando una nueva cuenta</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div>Si ya tienes cuenta, inicia sesión con tus credenciales</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         
-        <div class="glossary-term">
-          <dt>Almacenamiento Local</dt>
-          <dd>Tecnología que permite a las aplicaciones web almacenar datos directamente en el navegador del usuario.</dd>
-        </div>
+        <section id="pagina-principal">
+            <div class="section-title">
+                <h3>Página Principal</h3>
+            </div>
+            
+            <div class="cards-container">
+                <div class="card">
+                    <h4>Características Principales</h4>
+                    <ul class="feature-list">
+                        <li><strong>Header navegacional:</strong> Acceso rápido a todas las secciones</li>
+                        <li><strong>Búsqueda inteligente:</strong> Encuentra servicios y productos rápidamente</li>
+                        <li><strong>Tarjetas de servicios:</strong> Visualización atractiva de servicios disponibles</li>
+                        <li><strong>Indicadores de estado:</strong> Ver el estado de tus citas y pedidos</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4>Navegación Básica</h4>
+                    <ul class="feature-list">
+                        <li>Usa el menú superior para moverte entre secciones</li>
+                        <li>El botón de inicio siempre te lleva al dashboard principal</li>
+                        <li>El icono de perfil te permite acceder a tu cuenta y configuraciones</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
         
-        <div class="glossary-term">
-          <dt>UI (Interfaz de Usuario)</dt>
-          <dd>Conjunto de elementos visuales que permiten la interacción entre el usuario y el software.</dd>
+        <section id="gestion-perfil">
+            <div class="section-title">
+                <h3>Gestión de Perfil</h3>
+            </div>
+            
+            <div class="cards-container">
+                <div class="card">
+                    <h4>Tu Perfil de Usuario</h4>
+                    <ul class="feature-list">
+                        <li><strong>Información personal:</strong> Gestiona tus datos de contacto</li>
+                        <li><strong>Mascotas registradas:</strong> Añade y edita información de tus mascotas</li>
+                        <li><strong>Historial médico:</strong> Accede al historial completo de tus mascotas</li>
+                        <li><strong>Preferencias:</strong> Configura notificaciones y preferencias de servicio</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4>Cómo Actualizar tu Perfil</h4>
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div>Haz clic en tu nombre o avatar en la esquina superior derecha</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div>Selecciona "Mi Perfil"</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div>Edita la información necesaria</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div>Guarda los cambios</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="servicios-veterinarios">
+            <div class="section-title">
+                <h3>Servicios Veterinarios</h3>
+            </div>
+            
+            <h4>Tipos de Servicios Disponibles</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Servicio</th>
+                        <th>Descripción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Consultas generales</td>
+                        <td>Revisiones de rutina y chequeos de salud</td>
+                    </tr>
+                    <tr>
+                        <td>Urgencias</td>
+                        <td>Atención inmediata las 24/7 para casos críticos</td>
+                    </tr>
+                    <tr>
+                        <td>Vacunación</td>
+                        <td>Programa completo de vacunas para todas las edades</td>
+                    </tr>
+                    <tr>
+                        <td>Cirugías</td>
+                        <td>Procedimientos quirúrgicos programados y de emergencia</td>
+                    </tr>
+                    <tr>
+                        <td>Estética</td>
+                        <td>Baño, corte de uñas, peluquería y cuidados estéticos</td>
+                    </tr>
+                    <tr>
+                        <td>Laboratorio</td>
+                        <td>Análisis y pruebas diagnósticas especializadas</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="cards-container">
+                <div class="card">
+                    <h4>Agendar una Cita</h4>
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div>Navega a "Servicios" → "Agendar Cita"</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div>Selecciona el tipo de servicio necesario</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div>Elige la fecha y hora disponible</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div>Selecciona la mascota para la cita</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">5</div>
+                            <div>Confirma la ubicación (clínica o domicilio)</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">6</div>
+                            <div>Revisa y confirma la reserva</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="preguntas-frecuentes">
+            <div class="section-title">
+                <h3>Preguntas Frecuentes</h3>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>¿Puedo tener múltiples mascotas en una misma cuenta?</span>
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Sí, puedes registrar y gestionar todas tus mascotas desde una sola cuenta. No hay límite en el número de mascotas que puedes agregar.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>¿Qué métodos de pago aceptan?</span>
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Aceptamos tarjetas de crédito/débito, transferencias bancarias y pago en efectivo en clínica. También contamos con planes de financiamiento para procedimientos costosos.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>¿Puedo cancelar o reprogramar una cita?</span>
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Sí, puedes cancelar o reprogramar con al menos 24 horas de anticipación sin costo alguno. Las cancelaciones con menos tiempo pueden estar sujetas a cargos según la política de la clínica.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>¿Cómo contacto a mi veterinario?</span>
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Puedes enviar mensajes directos a través de la plataforma para consultas no urgentes. Para emergencias, utiliza el botón de "Urgencias" que conecta directamente con el servicio de emergencias 24/7.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-content">
+                <h3>Contacto y Soporte</h3>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div>
+                            <strong>Horario de atención:</strong><br>
+                            Lunes a Viernes: 7:00 AM - 9:00 PM<br>
+                            Sábados: 8:00 AM - 6:00 PM<br>
+                            Domingos: 9:00 AM - 2:00 PM
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div>
+                            <strong>Canales de contacto:</strong><br>
+                            Chat en vivo en la plataforma<br>
+                            Teléfono: (01) 234-5678<br>
+                            Email: soporte@pethealth.com
+                        </div>
+                    </div>
+                </div>
+                
+                <p><em>Este manual se actualiza regularmente. Visita la sección de ayuda para la versión más reciente.</em></p>
+                <p><strong>Pet-Health Services - Cuidando a quienes más quieres</strong></p>
+            </div>
         </div>
-      </dl>
-    </section>
+    </footer>
 
-    <section id="soporte" class="section">
-      <h2><i>📞</i> Soporte y Contacto</h2>
-      
-      <h3>Canales de Soporte</h3>
-      <div class="feature-grid">
-        <div class="feature-card">
-          <h4><i>📧</i> Correo Electrónico</h4>
-          <p><strong>soporte@pethealthservices.com</strong><br>Respuesta en 24-48 horas</p>
-        </div>
-        <div class="feature-card">
-          <h4><i>📞</i> Teléfono</h4>
-          <p><strong>+1-800-PET-CARE</strong><br>Lunes a Viernes, 9:00 - 18:00</p>
-        </div>
-        <div class="feature-card">
-          <h4><i>🌐</i> Documentación Online</h4>
-          <p><strong>docs.pethealthservices.com</strong><br>Manuales y tutoriales actualizados</p>
-        </div>
-      </div>
-      
-      <h3>Información para Reportar Problemas</h3>
-      <p>Cuando contactes al soporte técnico, por favor incluye:</p>
-      <ul>
-        <li>Descripción detallada del problema</li>
-        <li>Pasos para reproducir el error</li>
-        <li>Capturas de pantalla (si es posible)</li>
-        <li>Navegador y versión que estás usando</li>
-        <li>Sistema operativo</li>
-      </ul>
-      
-      <div class="note-box">
-        <h4><i>💡</i> Nota Final</h4>
-        <p>Este manual se actualiza regularmente. Visita nuestra página de documentación para acceder a la versión más reciente y tutoriales adicionales.</p>
-      </div>
-    </section>
-  </div>
-
-  <footer>
-    <div class="container">
-      <p>© 2025 Pet-Health Services. Todos los derechos reservados.</p>
-      <p>Manual de Usuario v2.1 - Última actualización: Enero 2025</p>
-    </div>
-  </footer>
+    <script>
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+                
+                const icon = question.querySelector('span:last-child');
+                icon.textContent = item.classList.contains('active') ? '−' : '+';
+            });
+        });
+        
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 20,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
