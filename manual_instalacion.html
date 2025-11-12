@@ -24,7 +24,7 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
             line-height: 1.6;
             color: var(--verde-oliva);
             background-color: var(--beige);
@@ -213,7 +213,7 @@
             color: #f8f8f2;
             padding: 1rem;
             border-radius: 5px;
-            font-family: 'Courier New', monospace;
+            font-family: 'Poppins', sans-serif;
             margin: 1rem 0;
             overflow-x: auto;
         }
@@ -269,7 +269,7 @@
             background-color: var(--gris-claro);
             border-radius: 5px;
             padding: 1.5rem;
-            font-family: 'Courier New', monospace;
+            font-family: 'Poppins', sans-serif;
             margin: 1rem 0;
         }
         
@@ -363,6 +363,83 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        @media (min-width: 768px) {
+            .titulo {
+                font-size: 2.25rem;
+            }
+        }
+
+        .mi-imagen {
+            width: 4rem;
+            height: 4rem;
+            object-fit: cover;
+            border-radius: 9999px;
+            transition-property: transform;
+            transition-duration: 700ms;
+        }
+
+        .sidebar {
+            width: 260px;
+            background-color: #6E7255;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding-top: 20px;
+            position: fixed;
+            height: 100%;
+            box-shadow: 2px 0 8px rgba(0,0,0,0.15);
+            overflow-y: auto;
+        }
+        
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+            letter-spacing: 1px;
+            padding: 0 15px;
+        }
+        
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            display: block;
+            transition: background 0.3s;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .sidebar a:hover {
+            background-color: #5A5E47;
+        }
+
+        .topnav {
+            background-color: #5A5E47;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            left: 260px;
+            right: 0;
+            z-index: 10;
+        }
+        
+        .topnav a {
+            color: #fce8ce;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+        
+        .topnav a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+        
+        .content {
+            margin-top: 60px;
+        }
     </style>
 </head>
 <body>
@@ -370,27 +447,31 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
+                    <span><img
+                        src="/images/logo.png"
+                        alt="Animales de granja - PET HEALTH-SERVICES"
+                        class="mi-imagen"
+                        />
+                    </span>
                     <h1>Manual de Instalación</h1>
                 </div>
-                <nav>
-                    <ul>
-                        <li><a href="#requisitos">Requisitos</a></li>
-                        <li><a href="#backend">Backend</a></li>
-                        <li><a href="#frontend">Frontend</a></li>
-                        <li><a href="#produccion">Producción</a></li>
-                    </ul>
-                </nav>
             </div>
         </div>
     </header>
+
+    <div class="sidebar">
+        <a href="#informacion-general">1. Información General del Proyecto</a>
+        <a href="#requisitos">2. Requisitos del Sistema</a>
+        <a href="#instalacion-rapida">3. Instalación Rápida con Docker</a>
+        <a href="#backend">4. Instalación Manual del Backend</a>
+        <a href="#frontend">5. Instalación Manual del Frontend</a>
+        <a href="#base-datos">6. Configuración de la Base de Datos</a>
+        <a href="#verificacion">7. Verificación de la Instalación</a>
+        <a href="#produccion">7. Despliegue en Producción</a>
+        <a href="#soporte">7. Solución de Problemas</a>
+    </div>
     
-    <main class="container">
-        <section id="" class="">
-            <h2>Manual de Instalación y Configuración</h2>
-            <p>Guía completa para instalar y configurar Pet-Health Services en tu entorno de desarrollo o producción</p>
-        </section>
-        
-        <section id="informacion-general">
+    <main class="container"><section id="informacion-general">
             <div class="section-title">
                 <h3>Información General del Proyecto</h3>
             </div>
