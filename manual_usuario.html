@@ -279,6 +279,12 @@
         }
         
         @media (max-width: 768px) {
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+            }
+
             .header-content {
                 flex-direction: column;
                 gap: 15px;
@@ -302,6 +308,77 @@
                 gap: 1rem;
             }
         }
+
+        .mi-imagen {
+            width: 4rem;
+            height: 4rem;
+            object-fit: cover;
+            border-radius: 9999px;
+            transition-property: transform;
+            transition-duration: 700ms;
+        }
+        
+        .sidebar {
+            width: 260px;
+            background-color: #6E7255;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding-top: 20px;
+            position: fixed;
+            height: 100%;
+            box-shadow: 2px 0 8px rgba(0,0,0,0.15);
+            overflow-y: auto;
+        }
+        
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+            letter-spacing: 1px;
+            padding: 0 15px;
+        }
+        
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            display: block;
+            transition: background 0.3s;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .sidebar a:hover {
+            background-color: #5A5E47;
+        }
+
+        .topnav {
+            background-color: #5A5E47;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            left: 260px;
+            right: 0;
+            z-index: 10;
+        }
+        
+        .topnav a {
+            color: #fce8ce;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+        
+        .topnav a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+        
+        .content {
+            margin-top: 60px;
+        }
     </style>
 </head>
 <body>
@@ -309,28 +386,29 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <span class="logo-icon"></span>
+                    <span><img
+                        src="./images/logo.png"
+                        alt="Animales de granja - PET HEALTH-SERVICES"
+                        class="mi-imagen"
+                        />
+                    </span>
                     <h1>Manual de Usuario</h1>
                 </div>
-                <nav>
-                    <ul>
-                        <li><a href="#inicio">Inicio</a></li>
-                        <li><a href="#perfil">Perfil</a></li>
-                        <li><a href="#mascotas">Mascotas</a></li>
-                        <li><a href="#servicios">Servicios</a></li>
-                        <li><a href="#contacto">Contacto</a></li>
-                    </ul>
-                </nav>
             </div>
         </div>
     </header>
+
+    <div class="sidebar">
+        <a href="#introduccion">1. Introducción</a>
+        <a href="#comenzando">2. Comenzando</a>
+        <a href="#pagina-principal">3. Página Principal</a>
+        <a href="#gestion-perfil">4. Gestión de Perfil</a>
+        <a href="#servicios-veterinarios">5. Servicios Veterinarios</a>
+        <a href="#preguntas-frecuentes">6. Preguntas Frecuentes</a>
+        <a href="#contacto">7. Contacto y Soporte</a>
+    </div>
     
     <main class="container">
-        <section id="" class="">
-            <h2>Manual de Usuario</h2>
-            <p>Bienvenido a Pet-Health Services, tu plataforma integral para el cuidado y bienestar de tus mascotas</p>
-        </section>
-        
         <section id="introduccion">
             <div class="section-title">
                 <h3>Introducción</h3>
@@ -632,4 +710,5 @@
     </script>
 </body>
 </html>
+
 
