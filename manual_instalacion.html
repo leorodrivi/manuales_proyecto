@@ -383,13 +383,14 @@
             width: 260px;
             background-color: #6E7255;
             color: white;
-            display: flex;
-            flex-direction: column;
-            padding-top: 20px;
             position: fixed;
             height: 100%;
             box-shadow: 2px 0 8px rgba(0,0,0,0.15);
             overflow-y: auto;
+        }
+        
+        .sidebar-content {
+            padding-top: 20px;
         }
         
         .sidebar h2 {
@@ -460,15 +461,17 @@
     </header>
 
     <div class="sidebar">
-        <a href="#informacion-general">1. Información General del Proyecto</a>
-        <a href="#requisitos">2. Requisitos del Sistema</a>
-        <a href="#instalacion-rapida">3. Instalación Rápida con Docker</a>
-        <a href="#backend">4. Instalación Manual del Backend</a>
-        <a href="#frontend">5. Instalación Manual del Frontend</a>
+        <div class="sidebar-content">
+            <a href="#informacion-general">1. Información General del Proyecto</a>
+            <a href="#requisitos">2. Requisitos del Sistema</a>
+            <a href="#instalacion-rapida">3. Instalación Rápida con Docker</a>
+            <a href="#backend">4. Instalación Manual del Backend</a>
+            <a href="#frontend">5. Instalación Manual del Frontend</a>
         <a href="#base-datos">6. Configuración de la Base de Datos</a>
         <a href="#verificacion">7. Verificación de la Instalación</a>
         <a href="#produccion">7. Despliegue en Producción</a>
         <a href="#soporte">7. Solución de Problemas</a>
+        </div>
     </div>
     
     <main class="container"><section id="informacion-general">
