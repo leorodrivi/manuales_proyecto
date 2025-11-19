@@ -322,14 +322,16 @@
             width: 260px;
             background-color: #6E7255;
             color: white;
-            display: flex;
-            flex-direction: column;
-            padding-top: 20px;
             position: fixed;
             height: 100%;
             box-shadow: 2px 0 8px rgba(0,0,0,0.15);
             overflow-y: auto;
         }
+        
+        .sidebar-content {
+            padding-top: 20px;
+        }
+
         
         .sidebar h2 {
             text-align: center;
@@ -399,13 +401,15 @@
     </header>
 
     <div class="sidebar">
-        <a href="#introduccion">1. Introducción</a>
-        <a href="#comenzando">2. Comenzando</a>
-        <a href="#pagina-principal">3. Página Principal</a>
-        <a href="#gestion-perfil">4. Gestión de Perfil</a>
-        <a href="#servicios-veterinarios">5. Servicios Veterinarios</a>
-        <a href="#preguntas-frecuentes">6. Preguntas Frecuentes</a>
-        <a href="#contacto">7. Contacto y Soporte</a>
+        <div class="sidebar-content">
+            <a href="#introduccion">1. Introducción</a>
+            <a href="#comenzando">2. Comenzando</a>
+            <a href="#pagina-principal">3. Página Principal</a>
+            <a href="#gestion-perfil">4. Gestión de Perfil</a>
+            <a href="#servicios-veterinarios">5. Servicios Veterinarios</a>
+            <a href="#preguntas-frecuentes">6. Preguntas Frecuentes</a>
+            <a href="#contacto">7. Contacto y Soporte</a>
+        </div>
     </div>
     
     <main class="container">
@@ -594,7 +598,7 @@
                         </div>
                         <div class="step">
                             <div class="step-number">5</div>
-                            <div>Confirma la ubicación (clínica o domicilio)</div>
+                            <div>Confirma la ubicación</div>
                         </div>
                         <div class="step">
                             <div class="step-number">6</div>
@@ -710,5 +714,8 @@
     </script>
 </body>
 </html>
+
+
+
 
 
